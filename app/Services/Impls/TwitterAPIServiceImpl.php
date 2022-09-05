@@ -3,7 +3,7 @@
 namespace App\Services\Impls;
 
 use App\Services\TwitterAPIService;
-use App\Utils\DatetimeUtil;
+use App\Utils\DateTimeUtil;
 use Auth;
 use Twitter;
 
@@ -22,7 +22,7 @@ class TwitterAPIServiceImpl implements TwitterAPIService
 
         $params = [
             'tweet.fields' => 'author_id,entities',
-            'start_time' => DatetimeUtil::getPastDaysToFetchData(),
+            'start_time' => DateTimeUtil::getPastDaysToFetchData(),
             'response_format' => 'array'
         ];
 

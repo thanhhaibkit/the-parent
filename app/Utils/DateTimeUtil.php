@@ -5,7 +5,7 @@ namespace App\Utils;
 use App\Constants\TheParentConst;
 use Carbon\Carbon;
 
-class DatetimeUtil
+class DateTimeUtil
 {
     public static function getPastDaysToFetchData()
     {
