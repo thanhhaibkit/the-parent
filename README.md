@@ -23,7 +23,7 @@ php artisan schema:migrate
 ```
 
 ### 5. Start with Artisan serve
-````
+```
 php artisan serve
 ```
 
