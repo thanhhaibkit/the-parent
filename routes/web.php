@@ -21,16 +21,21 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
-Route::get('login', [LoginController::class, 'index']);
+Route::get('login', [LoginController::class, 'index'])->name('login');
 
 Route::group([
     'prefix' => 'auth',
 ], function () {
+    // Redirect to provider auth page
     Route::get('{provider}', [SocialAuthController::class, 'redirectToProvider'])
     ->whereIn('provider', ['twitter']);
-    
+    // Provider callback
     Route::get('{provide}/callback', [SocialAuthController::class, 'handleProviderCallback']);
 });
 
-Route::get('display', [DisplayController::class, 'display'])->name('display');
-Route::get('refresh', [DisplayController::class, 'refresh'])->name('refresh');
+Route::middleware(['auth'])->group(function () {
+    // Display the tweets, most posting user and most domains
+    Route::get('display', [DisplayController::class, 'display'])->name('display');
+    // Fetch new data from Twitter and update it to DB
+    Route::get('refresh', [DisplayController::class, 'refresh'])->name('refresh');
+});

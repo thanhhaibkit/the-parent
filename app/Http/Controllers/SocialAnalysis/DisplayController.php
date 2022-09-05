@@ -7,15 +7,19 @@ use App\Models\Tweet;
 use App\Models\TweetMostDomain;
 use App\Models\TweetMostUser;
 use App\Services\TweetService;
+use App\Services\TwitterAPIService;
 
 class DisplayController extends Controller
 {
     private $tweetService;
+    private $twitterAPIService;
 
     public function __construct(
-        TweetService $tweetService
+        TweetService $tweetService,
+        TwitterAPIService $twitterAPIService
     ) {
         $this->tweetService = $tweetService;
+        $this->twitterAPIService = $twitterAPIService;
     }
 
 
@@ -30,7 +34,7 @@ class DisplayController extends Controller
 
     public function refresh()
     {
-        $data = $this->tweetService->fetchDataFromTwitter();
+        $data = $this->twitterAPIService->fetchDataFromTwitter();
 
         $this->tweetService->refreshTweetData($data);
         

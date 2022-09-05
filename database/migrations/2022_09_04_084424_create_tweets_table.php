@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('tweets', function (Blueprint $table) {
             $table->id();
             $table->string('tweet_id');
-            $table->string('author_nickname');
+            $table->string('author_id');
+            $table->string('author_nickname')->nullable();
             $table->text('text');
             $table->timestamps();
         });

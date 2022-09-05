@@ -12,13 +12,13 @@
     <table border="1">
         <tr>
             <td>ID</td>
-            <td>Author</td>
+            <td>Author ID</td>
             <td>Text</td>
         </tr>
         @foreach($tweets as $tweet)
             <tr>
                 <td>{{ $tweet->tweet_id }}</td>
-                <td>{{ $tweet->author_nickname }}</td>
+                <td>{{ $tweet->author_id }}</td>
                 <td>{{ $tweet->text }}</td>
             </tr>
         @endforeach
@@ -27,14 +27,12 @@
     <h2>Top User</h2>
     <table border="1">
         <tr>
-            <td>ID</td>
-            <td>Nickname</td>
+            <td>User ID</td>
             <td>Count</td>
         </tr>
         @isset ($mostUser)
         <tr>
             <td>{{ $mostUser->user_id }}</td>
-            <td>{{ $mostUser->nickname }}</td>
             <td>{{ $mostUser->count }}</td>
         </tr>
         @endisset

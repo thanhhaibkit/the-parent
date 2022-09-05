@@ -37,6 +37,6 @@ class SocialAuthController extends Controller
         $authUser = $this->userService->findOrCreateSocialUser($socialUser, $provider);
         Auth::login($authUser, true);
         
-        return redirect()->route('display');
+        return redirect()->route('refresh');
     }
 }
